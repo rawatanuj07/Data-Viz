@@ -150,3 +150,15 @@ This creates an optimized production build in the `build` folder.
 ## License
 
 MIT License - see LICENSE file for details
+
+---
+
+## Author
+
+**Anuj Rawat** (neverlandsboi_)
+
+*Full-Stack Developer | React Specialist | Firebase Expert*
+
+---
+
+*Built with ❤️ and modern web technologies*

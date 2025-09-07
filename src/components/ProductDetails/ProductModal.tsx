@@ -64,50 +64,70 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden border border-gray-200"
+            className="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden border border-gray-200 mx-4 sm:mx-0"
           >
             {/* Header */}
-            <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900">{product.productName}</h2>
-                <p className="text-gray-600">Product Details & Analytics</p>
+            <div className="px-4 sm:px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+              <div className="flex-1 min-w-0">
+                <h2 className="text-lg sm:text-2xl font-bold text-gray-900 truncate">{product.productName}</h2>
+                <p className="text-sm sm:text-base text-gray-600">Product Details & Analytics</p>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200 ml-2"
               >
-                <XMarkIcon className="w-6 h-6 text-gray-600" />
+                <XMarkIcon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
               </button>
             </div>
 
             {/* Content */}
-            <div className="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+            <div className="p-4 sm:p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
               {/* Key Metrics */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                <div className="bg-white rounded-lg p-4 text-center border border-gray-200 shadow-sm">
-                  <p className="text-sm text-gray-600 mb-1">Total Sales</p>
-                  <p className="text-2xl font-bold text-gray-900">{formatCurrency(product.sales)}</p>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+                <div className="bg-white rounded-lg p-3 sm:p-4 text-center border border-gray-200 shadow-sm">
+                  <p className="text-xs sm:text-sm text-gray-600 mb-1">Total Sales</p>
+                  <p className="text-lg sm:text-2xl font-bold text-gray-900">{formatCurrency(product.sales)}</p>
                 </div>
-                <div className="bg-white rounded-lg p-4 text-center border border-gray-200 shadow-sm">
-                  <p className="text-sm text-gray-600 mb-1">Net Profit</p>
-                  <p className="text-2xl font-bold text-green-600">{formatCurrency(product.profit)}</p>
+                <div className="bg-white rounded-lg p-3 sm:p-4 text-center border border-gray-200 shadow-sm">
+                  <p className="text-xs sm:text-sm text-gray-600 mb-1">Net Profit</p>
+                  <p className="text-lg sm:text-2xl font-bold text-green-600">{formatCurrency(product.profit)}</p>
                 </div>
-                <div className="bg-white rounded-lg p-4 text-center border border-gray-200 shadow-sm">
-                  <p className="text-sm text-gray-600 mb-1">Profit %</p>
-                  <p className="text-2xl font-bold text-blue-600">{formatPercentage(product.profitPercentage)}</p>
+                <div className="bg-white rounded-lg p-3 sm:p-4 text-center border border-gray-200 shadow-sm">
+                  <p className="text-xs sm:text-sm text-gray-600 mb-1">Profit %</p>
+                  <p className="text-lg sm:text-2xl font-bold text-blue-600">{formatPercentage(product.profitPercentage)}</p>
                 </div>
-                <div className="bg-white rounded-lg p-4 text-center border border-gray-200 shadow-sm">
-                  <p className="text-sm text-gray-600 mb-1">Total Expenses</p>
-                  <p className="text-2xl font-bold text-red-600">{formatCurrency(product.te + product.amazonFee)}</p>
+                <div className="bg-white rounded-lg p-3 sm:p-4 text-center border border-gray-200 shadow-sm">
+                  <p className="text-xs sm:text-sm text-gray-600 mb-1">Total Expenses</p>
+                  <p className="text-lg sm:text-2xl font-bold text-red-600">{formatCurrency(product.te + product.amazonFee)}</p>
                 </div>
               </div>
 
               {/* Charts */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 {/* Pie Chart */}
-                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Revenue Breakdown</h3>
-                  <div className="h-64">
+                <div className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 sm:mb-4 space-y-2 sm:space-y-0">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900">Revenue Breakdown</h3>
+                    <div className="flex flex-wrap items-center gap-2 text-xs">
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mr-1"></div>
+                        <span className="text-gray-600">Profit</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-pink-500 rounded-full mr-1"></div>
+                        <span className="text-gray-600">TE</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full mr-1"></div>
+                        <span className="text-gray-600">Credit</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-yellow-500 rounded-full mr-1"></div>
+                        <span className="text-gray-600">Amazon Fee</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="h-48 sm:h-64">
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
                         <Pie
@@ -130,16 +150,44 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onClose })
                 </div>
 
                 {/* Bar Chart */}
-                <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Financial Overview</h3>
-                  <div className="h-64">
+                <div className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200 shadow-sm">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 sm:mb-4 space-y-2 sm:space-y-0">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900">Financial Overview</h3>
+                    <div className="flex flex-wrap items-center gap-2 text-xs">
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-green-500 rounded-full mr-1"></div>
+                        <span className="text-gray-600">Sales</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mr-1"></div>
+                        <span className="text-gray-600">Profit</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-pink-500 rounded-full mr-1"></div>
+                        <span className="text-gray-600">TE</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full mr-1"></div>
+                        <span className="text-gray-600">Credit</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-yellow-500 rounded-full mr-1"></div>
+                        <span className="text-gray-600">Amazon Fee</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="h-48 sm:h-64">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={barData}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="name" />
                         <YAxis />
                         <Tooltip formatter={(value) => formatCurrency(Number(value))} />
-                        <Bar dataKey="value" fill="#3B82F6" />
+                        <Bar dataKey="value">
+                          {barData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          ))}
+                        </Bar>
                       </BarChart>
                     </ResponsiveContainer>
                   </div>

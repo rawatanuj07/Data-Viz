@@ -152,9 +152,29 @@ const ProductDetails: React.FC = () => {
           transition={{ delay: 0.8 }}
           className="card"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Revenue Breakdown
-          </h3>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 space-y-2 sm:space-y-0">
+            <h3 className="text-lg font-semibold text-gray-900">
+              Revenue Breakdown
+            </h3>
+            <div className="flex flex-wrap items-center gap-2 text-xs">
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-green-500 rounded-full mr-1"></div>
+                <span className="text-gray-600">Profit</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-yellow-500 rounded-full mr-1"></div>
+                <span className="text-gray-600">TE</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-blue-500 rounded-full mr-1"></div>
+                <span className="text-gray-600">Credit</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-red-500 rounded-full mr-1"></div>
+                <span className="text-gray-600">Amazon Fee</span>
+              </div>
+            </div>
+          </div>
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -184,9 +204,33 @@ const ProductDetails: React.FC = () => {
           transition={{ delay: 1.0 }}
           className="card"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Financial Overview
-          </h3>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 space-y-2 sm:space-y-0">
+            <h3 className="text-lg font-semibold text-gray-900">
+              Financial Overview
+            </h3>
+            <div className="flex flex-wrap items-center gap-2 text-xs">
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-blue-500 rounded-full mr-1"></div>
+                <span className="text-gray-600">Sales</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-green-500 rounded-full mr-1"></div>
+                <span className="text-gray-600">Profit</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-yellow-500 rounded-full mr-1"></div>
+                <span className="text-gray-600">TE</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-purple-500 rounded-full mr-1"></div>
+                <span className="text-gray-600">Credit</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-red-500 rounded-full mr-1"></div>
+                <span className="text-gray-600">Amazon Fee</span>
+              </div>
+            </div>
+          </div>
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={barData}>
@@ -194,7 +238,11 @@ const ProductDetails: React.FC = () => {
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip formatter={(value) => formatCurrency(Number(value))} />
-                <Bar dataKey="value" fill="#3B82F6" />
+                <Bar dataKey="value">
+                  {barData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Bar>
               </BarChart>
             </ResponsiveContainer>
           </div>

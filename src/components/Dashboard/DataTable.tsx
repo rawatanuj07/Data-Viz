@@ -47,12 +47,13 @@ const DataTable: React.FC<DataTableProps> = ({ products }) => {
         transition={{ duration: 0.6 }}
         className="bg-white rounded-xl shadow-lg overflow-hidden"
       >
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h2 className="text-xl font-semibold text-gray-900">Product Data</h2>
+        <div className="px-4 lg:px-6 py-4 border-b border-gray-200">
+          <h2 className="text-lg lg:text-xl font-semibold text-gray-900">Product Data</h2>
           <p className="text-sm text-gray-600">{products.length} products found</p>
         </div>
 
-        <div className="overflow-x-auto">
+        {/* Desktop Table */}
+        <div className="hidden lg:block overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
@@ -132,6 +133,56 @@ const DataTable: React.FC<DataTableProps> = ({ products }) => {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Cards */}
+        <div className="lg:hidden">
+          {products.map((product, index) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+              onClick={() => handleRowClick(product)}
+              className="p-4 border-b border-gray-200 hover:bg-blue-50 cursor-pointer transition-colors duration-200"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-medium text-gray-900 truncate flex-1 mr-2">
+                  {product.productName}
+                </h3>
+                <div className={`text-sm font-medium ${
+                  product.profit >= 0 ? 'text-green-600' : 'text-red-600'
+                }`}>
+                  {formatCurrency(product.profit)}
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-2 text-xs text-gray-600">
+                <div className="flex justify-between">
+                  <span>Sales:</span>
+                  <span className="font-medium">{formatCurrency(product.sales)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Profit %:</span>
+                  <span className={`font-medium ${
+                    product.profitPercentage >= 0 ? 'text-green-600' : 'text-red-600'
+                  }`}>
+                    {formatPercentage(product.profitPercentage)}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span>TE:</span>
+                  <span className="font-medium">{formatCurrency(product.te)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Credit:</span>
+                  <span className="font-medium">{formatCurrency(product.credit)}</span>
+                </div>
+              </div>
+              <div className="mt-2 text-xs text-gray-500">
+                Amazon Fee: {formatCurrency(product.amazonFee)}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
 

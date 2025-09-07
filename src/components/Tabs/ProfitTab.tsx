@@ -123,9 +123,21 @@ const ProfitTab: React.FC = () => {
           transition={{ delay: 0.6 }}
           className="card"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Profit vs Sales by Product
-          </h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-gray-900">
+              Profit vs Sales by Product
+            </h3>
+            <div className="flex items-center space-x-4 text-sm">
+              <div className="flex items-center">
+                <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                <span className="text-gray-600">Sales</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                <span className="text-gray-600">Profit</span>
+              </div>
+            </div>
+          </div>
           <div className="h-80 bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg">
             {profitData.length === 0 ? (
               <div className="flex items-center justify-center h-full text-gray-500">
@@ -164,9 +176,21 @@ const ProfitTab: React.FC = () => {
           transition={{ delay: 0.8 }}
           className="card"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
-            Profit vs Expenses Distribution
-          </h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-gray-900">
+              Profit vs Expenses Distribution
+            </h3>
+            <div className="flex items-center space-x-4 text-sm">
+              <div className="flex items-center">
+                <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                <span className="text-gray-600">Total Profit</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                <span className="text-gray-600">Total Expenses</span>
+              </div>
+            </div>
+          </div>
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -197,9 +221,17 @@ const ProfitTab: React.FC = () => {
         transition={{ delay: 1.0 }}
         className="card"
       >
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">
-          Profit Percentage by Product
-        </h3>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-gray-900">
+            Profit Percentage by Product
+          </h3>
+          <div className="flex items-center space-x-4 text-sm">
+            <div className="flex items-center">
+              <div className="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
+              <span className="text-gray-600">Profit Percentage</span>
+            </div>
+          </div>
+        </div>
         <div className="h-80 bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg">
           {profitData.length === 0 ? (
             <div className="flex items-center justify-center h-full text-gray-500">

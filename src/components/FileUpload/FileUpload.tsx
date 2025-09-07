@@ -93,14 +93,14 @@ const FileUpload: React.FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="max-w-4xl mx-auto p-6"
+      className="max-w-4xl mx-auto p-4 sm:p-6"
     >
-      <div className="text-center mb-8">
+      <div className="text-center mb-6 sm:mb-8">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-3xl font-bold text-gray-900 mb-4"
+          className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4"
         >
           Upload Your Data Sheet
         </motion.h1>
@@ -108,7 +108,7 @@ const FileUpload: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="text-gray-600"
+          className="text-sm sm:text-base text-gray-600"
         >
           Upload CSV or Excel files with your product data
         </motion.p>
@@ -118,7 +118,7 @@ const FileUpload: React.FC = () => {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.6 }}
-        className="bg-white rounded-2xl shadow-xl border-2 border-dashed border-gray-300 p-12"
+        className="bg-white rounded-2xl shadow-xl border-2 border-dashed border-gray-300 p-6 sm:p-12"
       >
         <div
           {...getRootProps()}
@@ -134,18 +134,18 @@ const FileUpload: React.FC = () => {
             <motion.div
               animate={isDragActive ? { scale: 1.1, rotate: 5 } : { scale: 1, rotate: 0 }}
               transition={{ duration: 0.2 }}
-              className="mx-auto w-24 h-24 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full flex items-center justify-center mb-6"
+              className="mx-auto w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full flex items-center justify-center mb-4 sm:mb-6"
             >
               {isProcessing ? (
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-b-2 border-blue-600"></div>
               ) : (
-                <CloudArrowUpIcon className="w-12 h-12 text-blue-600" />
+                <CloudArrowUpIcon className="w-8 h-8 sm:w-12 sm:h-12 text-blue-600" />
               )}
             </motion.div>
 
             <motion.h3
               animate={{ opacity: isDragActive ? 0.8 : 1 }}
-              className="text-xl font-semibold text-gray-900 mb-2"
+              className="text-lg sm:text-xl font-semibold text-gray-900 mb-2"
             >
               {isProcessing
                 ? 'Processing your file...'
@@ -154,7 +154,7 @@ const FileUpload: React.FC = () => {
                 : 'Drag & drop your file here'}
             </motion.h3>
 
-            <p className="text-gray-600 mb-6">
+            <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
               or click to browse files
             </p>
 
@@ -182,10 +182,10 @@ const FileUpload: React.FC = () => {
         <h3 className="text-lg font-semibold text-blue-900 mb-4">
           Required Sheet Format
         </h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
           {['Product Name', 'Sales', 'Profit', 'TE', 'Credit', 'Amazon Fee', 'Profit Percentage'].map((column) => (
-            <div key={column} className="bg-white rounded-lg p-3 text-center">
-              <span className="text-sm font-medium text-gray-700">{column}</span>
+            <div key={column} className="bg-white rounded-lg p-2 sm:p-3 text-center">
+              <span className="text-xs sm:text-sm font-medium text-gray-700">{column}</span>
             </div>
           ))}
         </div>

@@ -33,7 +33,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
       initial={{ x: -300 }}
       animate={{ x: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className={`bg-white shadow-xl border-r border-gray-200 transition-all duration-300 ${
+      className={`bg-white shadow-xl border-r border-gray-200 transition-all duration-300 h-full flex flex-col ${
         isCollapsed ? 'w-16' : 'w-64'
       }`}
     >
@@ -93,7 +93,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
       )}
 
       {/* Navigation */}
-      <nav className="p-4 space-y-2">
+      <nav className="p-4 space-y-2 flex-1">
         {tabs.map((tab, index) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -128,7 +128,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
       </nav>
 
       {/* Collapse indicator */}
-      <div className="absolute bottom-4 left-4">
+      <div className="p-4">
         <motion.div
           animate={{ rotate: isCollapsed ? 180 : 0 }}
           transition={{ duration: 0.3 }}
